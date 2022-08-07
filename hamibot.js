@@ -20,9 +20,11 @@ for (let i = 1; true; i++) {
         sleep(20); // Wait for the new page to load.
         while (true) {
             let button2 = className("Button").text("抢单").findOne(20); // Search for the second button.
+            log(button2);
             if (button2) {
                 button2.click();
                 let okButton = id("juw").text("确定").findOne(30);
+                log("okButton: " + okButton);
                 if (okButton) {
                     okButton.click();
                     toastLog("点击确定");
