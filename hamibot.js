@@ -18,11 +18,11 @@ for (let i = 1; true; i++) {
         button.click();
         toastLog("点击抢单");
         sleep(20); // Wait for the new page to load.
-        let button2 = className("Button").text("抢单").findOne(100); // Search for the second button.
         while (true) {
+            let button2 = className("Button").text("抢单").findOne(20); // Search for the second button.
             if (button2) {
                 button2.click();
-                let okButton = id("juw").text("确定").findOne(10);
+                let okButton = id("juw").text("确定").findOne(30);
                 if (okButton) {
                     okButton.click();
                     toastLog("点击确定");
@@ -30,7 +30,6 @@ for (let i = 1; true; i++) {
                     break;
                 }
             }
-            sleep(5);
         }
     } // If the button is not found, the page is refreshed again.
 }
