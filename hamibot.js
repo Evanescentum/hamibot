@@ -10,10 +10,10 @@ if (len == 0) {
 toastLog("found " + len + " items!");
 for (let i = 1; true; i++) {
     if (i % 100 == 0) {
-        hamibot.postMessage("已经执行了" + i + "次");
+        log("已经执行了" + i + "次");
     }
     items[1].click() // Refresh the page.
-    let button = className("Button").text("抢单").findOne(50); // Search for the button.
+    let button = className("Button").text("抢单").findOne(20); // Search for the button.
     if (button) {
         button.click();
         toastLog("点击抢单");
