@@ -13,24 +13,27 @@ for (let i = 1; true; i++) {
         log("已经执行了" + i + "次");
     }
     items[1].click() // Refresh the page.
-    let button = className("Button").text("抢单").findOne(20); // Search for the button.
+    let button = className("Button").text("抢单").findOne(10); // Search for the button.
     if (button) {
         button.click();
         toastLog("点击抢单");
-        sleep(20); // Wait for the new page to load.
+        sleep(100); // Wait for the new page to load.
+        let button2 = className("Button").text("抢单").findOne(200); // Search for the second button.
+        if (button2 == null) {
+            log("未找到第二个抢单按钮");
+            continue;
+        }
+        log(button2);
+        let [x, y] = [button2.bounds().centerX(), button2.bounds().centerY()];
         while (true) {
-            let button2 = className("Button").text("抢单").findOne(20); // Search for the second button.
-            log(button2);
-            if (button2) {
-                button2.click();
-                let okButton = id("juw").text("确定").findOne(30);
-                log("okButton: " + okButton);
-                if (okButton) {
-                    okButton.click();
-                    toastLog("点击确定");
-                    back();
-                    break;
-                }
+            click(x, y);
+            let okButton = id("juw").text("确定").findOne(30);
+            log("okButton: " + okButton);
+            if (okButton) {
+                okButton.click();
+                toastLog("点击确定");
+                back();
+                break;
             }
         }
     } // If the button is not found, the page is refreshed again.
