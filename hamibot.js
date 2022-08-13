@@ -2,14 +2,16 @@ auto.waitFor(); // 文档地址：https://docs.hamibot.com/reference/widgetsBase
 
 hamibot.postMessage(auto.rootInActiveWindow);
 for (let i = 1; true; i++) {
-    if (!click("抢单", 0)) {
-        toast("没找到抢单按钮");
+    let button = text("抢单").findOne(10);
+    if (button) {
+        toastLog("找到抢单按钮, x=" + button.bounds().centerX() + ", y=" + button.bounds().centerY());
+        button.click();
     }
     let okButton = id("juw").text("确定").findOne(10);
     if (okButton != null) {
         let [x, y] = [okButton.bounds().centerX(), okButton.bounds().centerY()];
         log("找到确定按钮: x=" + x + ", y=" + y);
-        click(okButton);
+        okButton.click();
         sleep(500);
         back();
     }
