@@ -5,7 +5,9 @@ for (let i = 1; true; i++) {
     if (i % 1000 == 0) {
         log("已经执行了" + i + "次");
     }
-    click("抢单", 0);
+    if (!click("抢单", 0)) {
+        toast("没找到抢单按钮");
+    }
     let okButton = id("juw").text("确定").findOne(10);
     if (okButton != null) {
         let [x, y] = [okButton.bounds().centerX(), okButton.bounds().centerY()];
