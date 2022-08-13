@@ -1,7 +1,6 @@
 auto.waitFor(); // 文档地址：https://docs.hamibot.com/reference/widgetsBasedAutomation
 
 hamibot.postMessage(auto.rootInActiveWindow);
-toastLog("found " + len + " items!");
 for (let i = 1; true; i++) {
     if (i % 1000 == 0) {
         log("已经执行了" + i + "次");
