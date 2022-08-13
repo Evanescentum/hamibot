@@ -15,7 +15,8 @@ for (let i = 1; true; i++) {
     click("抢单", 0);
     let okButton = id("juw").text("确定").findOne(10);
     if (okButton != null) {
-        log(`找到确定按钮: x=${okButton.bounds().centerX()},y=${okButton.bounds().centerY()}`);
+        let [x, y] = [okButton.bounds().centerX(), okButton.bounds().centerY()];
+        log("找到确定按钮: x=" + x + ", y=" + y);
         click(okButton);
         sleep(500);
         back();
