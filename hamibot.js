@@ -22,7 +22,7 @@ for (let i = 1; true; i++) {
         back();
     }
     else {
-        let items = id("uu").findOne(10);
+        let items = id("uu").find();
         if (items.length != 0) {
             items[1].click();
         }
