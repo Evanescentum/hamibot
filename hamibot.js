@@ -4,8 +4,9 @@ hamibot.postMessage(auto.rootInActiveWindow);
 for (let i = 1; true; i++) {
     let button = text("抢单").findOnce();
     if (button) {
+        let [x, y] = [button.bounds().centerX(), button.bounds().centerY()];
         toastLog("找到抢单按钮, x=" + button.bounds().centerX() + ", y=" + button.bounds().centerY());
-        button.click();
+        press(x, y, 100);
     }
     let okButton = id("juw").text("确定").findOnce();
     if (okButton != null) {
