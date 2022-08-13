@@ -1,12 +1,6 @@
 auto.waitFor(); // 文档地址：https://docs.hamibot.com/reference/widgetsBasedAutomation
 
 hamibot.postMessage(auto.rootInActiveWindow);
-let items = id("uu").find(); // The second item is the button that can refresh the page.
-let len = items.length;
-if (len == 0) {
-    toastLog("没有找到货源大厅按钮,请检查当前是否为货源大厅界面!");
-    hamibot.exit();
-}
 toastLog("found " + len + " items!");
 for (let i = 1; true; i++) {
     if (i % 1000 == 0) {
@@ -24,7 +18,7 @@ for (let i = 1; true; i++) {
     else {
         let items = id("uu").find();
         if (items.length != 0) {
-            items[1].click();
+            items[1].click(); // The second item is the button that can refresh the page.
         }
     }
 }
