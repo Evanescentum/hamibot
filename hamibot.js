@@ -22,6 +22,9 @@ for (let i = 1; true; i++) {
         back();
     }
     else {
-        click("货源大厅", 0);
+        let items = id("uu").findOne(10);
+        if (items.length != 0) {
+            items[1].click();
+        }
     }
 }
