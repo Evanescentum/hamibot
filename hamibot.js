@@ -2,9 +2,6 @@ auto.waitFor(); // 文档地址：https://docs.hamibot.com/reference/widgetsBase
 
 hamibot.postMessage(auto.rootInActiveWindow);
 for (let i = 1; true; i++) {
-    if (i % 1000 == 0) {
-        log("已经执行了" + i + "次");
-    }
     if (!click("抢单", 0)) {
         toast("没找到抢单按钮");
     }
@@ -21,5 +18,8 @@ for (let i = 1; true; i++) {
         if (items.length != 0) {
             items[1].click(); // The second item is the button that can refresh the page.
         }
+    }
+    if (i % 1000 == 0) {
+        log("已经执行了" + i + "次");
     }
 }
