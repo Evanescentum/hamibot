@@ -26,6 +26,7 @@ for (let i = 1; true; i++) {
                 continue;
             }
             log("找到第二个抢单按钮：" + button2);
+            log("第二个抢单按钮x:" + button2.bounds().centerX() + " y:" + button2.bounds().centerY());
             button2.click();
             let okButton = id("juw").text("确定").findOne(10);
             if (okButton) {
