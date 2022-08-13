@@ -9,27 +9,27 @@ if (len == 0) {
 }
 toastLog("found " + len + " items!");
 for (let i = 1; true; i++) {
-    if (i % 100 == 0) {
+    if (i % 1000 == 0) {
         log("已经执行了" + i + "次");
     }
     items[1].click() // Refresh the page.
     let button = className("Button").text("抢单").findOne(10); // Search for the button.
     if (button) {
+        log("第一个抢单按钮：" + button)
         button.click();
         toastLog("点击抢单");
         sleep(100); // Wait for the new page to load.
-        let button2 = className("Button").text("抢单").findOne(200); // Search for the second button.
-        if (button2 == null) {
-            log("未找到第二个抢单按钮");
-            continue;
-        }
-        log(button2);
-        let [x, y] = [button2.bounds().centerX(), button2.bounds().centerY()];
         while (true) {
-            click(x, y);
-            let okButton = id("juw").text("确定").findOne(30);
-            log("okButton: " + okButton);
+            let button2 = className("Button").text("抢单").findOne(20); // Search for the second button.
+            if (button2 == null) {
+                log("未找到第二个抢单按钮");
+                continue;
+            }
+            log("找到第二个抢单按钮：" + button2);
+            button2.click();
+            let okButton = id("juw").text("确定").findOne(10);
             if (okButton) {
+                log("okButton: " + okButton);
                 okButton.click();
                 toastLog("点击确定");
                 back();
