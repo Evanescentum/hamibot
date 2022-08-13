@@ -12,30 +12,15 @@ for (let i = 1; true; i++) {
     if (i % 1000 == 0) {
         log("已经执行了" + i + "次");
     }
-    items[1].click() // Refresh the page.
-    let button = className("Button").text("抢单").findOne(10); // Search for the button.
-    if (button) {
-        log("第一个抢单按钮：" + button)
-        button.click();
-        toastLog("点击抢单");
-        sleep(100); // Wait for the new page to load.
-        while (true) {
-            let button2 = className("Button").text("抢单").findOne(20); // Search for the second button.
-            if (button2 == null) {
-                log("未找到第二个抢单按钮");
-                continue;
-            }
-            log("找到第二个抢单按钮：" + button2);
-            log("第二个抢单按钮x:" + button2.bounds().centerX() + " y:" + button2.bounds().centerY());
-            button2.click();
-            let okButton = id("juw").text("确定").findOne(10);
-            if (okButton) {
-                log("okButton: " + okButton);
-                okButton.click();
-                toastLog("点击确定");
-                back();
-                break;
-            }
-        }
-    } // If the button is not found, the page is refreshed again.
+    click("抢单", 0);
+    let okButton = id("juw").text("确定").findOne(10);
+    if (okButton != null) {
+        log(`找到确定按钮: x=${okButton.bounds().centerX()},y=${okButton.bounds().centerY()}`);
+        click(okButton);
+        sleep(500);
+        back();
+    }
+    else {
+        click("货源大厅", 0);
+    }
 }
